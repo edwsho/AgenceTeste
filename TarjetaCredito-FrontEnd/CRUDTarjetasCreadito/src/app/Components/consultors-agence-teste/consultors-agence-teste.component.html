@@ -1,0 +1,245 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h3> CONSULTORES </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    
+                    <div class="row">
+                      <div class="col-lg-6 espaciadorConsultor">
+                        <button id="ConsultorButton" (click)="mantenercolorButtonConsultor()" type="button" class="btn btn-outline-primary m-4">Por Consultor</button>
+                        <button id="ClienteButton" (click)="mantenercolorButtonCliente()" type="button" class="btn btn-outline-primary">Por Cliente</button>
+                      </div>  
+                    </div>
+<div *ngIf="ConsultoresFlag">
+                    <form [formGroup]="form">
+
+                    <div> <!-- Hidden-->
+                    <div class="row">
+                      <div class="col-sm-2 text-center" style="margin-left: 2%;">
+                       <span> Periodo </span>
+                      </div>
+
+                      <div class="col-lg-2">
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text"> 
+                                <i class="fa-solid fa-calendar"></i>
+                            </span>
+                            <input formControlName="desde" style="font-size: 12px;" type="month" class="form-control" placeholder="Fecha Vencimiento" aria-label="Fecha Vencimiento" aria-describedby="basic-addon1">
+                          </div> 
+                      </div>
+                        a
+                      <div class="col-lg-2">
+                        <div class="input-group input-group-sm mb-3">
+                            <span class="input-group-text"> 
+                                <i class="fa-solid fa-calendar"></i>
+                            </span>
+                            <input formControlName="hasta" style="font-size: 12px;" type="month" class="form-control" placeholder="Fecha Vencimiento" aria-label="Fecha Vencimiento" aria-describedby="basic-addon1"> <!-- formControlName="fechaExp" -->
+                          </div> 
+                      </div>
+                    </div>
+
+                    <div class="row pt-3">
+
+                      <div class="col-md-2 text-center" style="margin-left: 2%;">
+                        <span>Consultores</span>
+                       </div>
+ 
+
+                      <div class="col-md-2" style="width:auto;">
+                        <select class="form-select-md" name="list1" id="list1" multiple aria-label="multiple select example" style="width:180px; height: 90px;"  formControlName="select1">
+                            <option style="font-size: 12px;" *ngFor="let dept of allConsultores">
+                              {{dept}}
+                            </option>
+                          </select>
+                      </div>
+                        
+                        <div class="col-md-1">
+                          <div class="row m-2">
+                          <button type="button" class="btn btn-outline-primary btn-sm" (click)="pullSelect_1to_2()"> >> </button>
+                          </div>
+                          <div class="row m-2">
+                          <button type="button" class="btn btn-outline-primary btn-sm" (click)="pullSelect_2to_1()"> << </button>
+                        </div>
+                        </div>
+
+                        <div class="col-md-4">
+                          <select class="form-select-md" name="list2" id="list2" multiple aria-label="multiple select example" style="width:180px; height: 90px;" formControlName="select2">
+                            <option style="font-size: 12px;" *ngFor="let dept of secondselect">
+                              {{dept}}
+                            </option>
+                          </select>
+                        </div>
+
+                        <div class="col-sm-1">
+                          <div class="row" style="margin-bottom: 20%;">
+                            <button type="button" class="btn btn-outline-primary btn-sm" (click)="metodo()">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-receipt-cutoff" viewBox="0 0 16 16">
+                                <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zM11.5 4a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1zm0 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"/>
+                                <path d="M2.354.646a.5.5 0 0 0-.801.13l-.5 1A.5.5 0 0 0 1 2v13H.5a.5.5 0 0 0 0 1h15a.5.5 0 0 0 0-1H15V2a.5.5 0 0 0-.053-.224l-.5-1a.5.5 0 0 0-.8-.13L13 1.293l-.646-.647a.5.5 0 0 0-.708 0L11 1.293l-.646-.647a.5.5 0 0 0-.708 0L9 1.293 8.354.646a.5.5 0 0 0-.708 0L7 1.293 6.354.646a.5.5 0 0 0-.708 0L5 1.293 4.354.646a.5.5 0 0 0-.708 0L3 1.293 2.354.646zm-.217 1.198.51.51a.5.5 0 0 0 .707 0L4 1.707l.646.647a.5.5 0 0 0 .708 0L6 1.707l.646.647a.5.5 0 0 0 .708 0L8 1.707l.646.647a.5.5 0 0 0 .708 0L10 1.707l.646.647a.5.5 0 0 0 .708 0L12 1.707l.646.647a.5.5 0 0 0 .708 0l.509-.51.137.274V15H2V2.118l.137-.274z"/>
+                              </svg>
+                              Relatorio
+                            </button>
+                          </div>
+
+                          <div class="row"  style="margin-bottom: 20%;">
+                            <button type="button" class="btn btn-outline-primary btn-sm" (click)="metodoLineChart()" [disabled]="!activateChartsButton">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
+                                <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+                              </svg>
+                              Grafico
+                            </button>
+                          </div>
+
+                          <div class="row" style="margin-bottom: 20%;" >
+                            <button type="button" class="btn btn-outline-primary btn-sm" (click)="metodoPizzaPieChart()" [disabled]="!activateChartsButton">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pie-chart" viewBox="0 0 16 16">
+                                <path d="M7.5 1.018a7 7 0 0 0-4.79 11.566L7.5 7.793V1.018zm1 0V7.5h6.482A7.001 7.001 0 0 0 8.5 1.018zM14.982 8.5H8.207l-4.79 4.79A7 7 0 0 0 14.982 8.5zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
+                              </svg>
+                              Pizza
+                            </button>
+                          </div>
+                      </div>
+                      </div>
+                </div>
+              </form>
+
+
+                <div *ngIf="consult" class="container mt-3 mb-2">
+                  
+                  <div class="card">
+                    <div class="card-body">
+
+                      <div *ngIf="spinnerFlag">
+                        <div class="text-center">
+                        <div class="spinner-border text-primary" style="width: 5rem; height: 5rem;" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div>
+                      </div>
+
+                      </div>
+
+                      <div *ngIf="sinCoincidenciasFalg">
+                        <h3>No se encontraron coincidencias</h3>
+                      </div>
+
+                  <table *ngFor="let item of dummyData2" class="table table-bordered mb-5" style="background-color: aliceblue;">
+                    <thead>
+                      <tr>
+                        <th class="w-25" style="background-color: #0d6efd; color: aliceblue;" scope="col">{{item.name}}</th>
+                      </tr>
+                      <tr>
+                        <th scope="col"> </th>
+                        <th scope="col">Periodo</th>
+                        <th scope="col">Receita Líquida</th>
+                        <th scope="col">Custo Fixo</th>
+                        <th scope="col">Comissão</th>
+                        <th scope="col">Lucro</th>
+
+                      </tr>
+                    </thead>
+                    <tbody *ngFor="let itemContent of item.listaReceitas">
+                      <tr>
+                        <th scope="row"></th>
+                        <th scope="row">{{itemContent.periodo}}</th>
+                        <td>{{itemContent.receita | reaisPipe}}</td>
+                        <td>{{itemContent.custoFixo | reaisNegative}}</td>
+                        <td>{{itemContent.comisao | reaisNegative}}</td>
+                        <td *ngIf="itemContent.lucro > 0">{{itemContent.lucro | reaisPipe}}</td>
+                        <td *ngIf="itemContent.lucro < 0" style="color: red;">{{itemContent.lucro | reaisPipe}}</td>
+                      </tr>
+                    </tbody>
+                    <tbody *ngFor="let itemContent2 of item.saldo">
+                      <tr style="background-color: azure;">
+                        <th scope="row">Saldo</th>
+                        <th scope="row"></th>
+                        <td>{{itemContent2.saldoreceita | reaisPipe}}</td>
+                        <td>{{itemContent2.saldocusto | reaisPipe}}</td>
+                        <td>{{itemContent2.saldocomisao | reaisPipe}}</td>
+                        <td *ngIf="itemContent2.saldolucro > 0 " style="color:#0d6efd;">{{itemContent2.saldolucro | reaisPipe}}</td>
+                        <td *ngIf="itemContent2.saldolucro < 0 " style="color:red;">{{itemContent2.saldolucro | reaisPipe}}</td>
+                      </tr>
+                    </tbody>
+                    
+                  </table>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div *ngIf="lineChartDiv" class="container mt-3 mb-2">
+
+                  <div class="card">
+                    <div class="card-body">
+
+                      <div class="row">
+                        <div class="col-9 text-center" style="margin-left: 2%;">
+
+                          <!-- <h1>Line Chart</h1> -->
+
+                          <fusioncharts
+                            width="700"
+                            height="400"
+                            type="mscombi2d"
+                            [dataSource]="dataSource">
+                          </fusioncharts>
+
+                        </div>
+                      </div>
+
+                      
+
+                    </div>
+                  </div>
+
+                </div>
+
+
+                <div *ngIf="pizzaPieChartDiv" class="container mt-3 mb-2">
+
+                  <div class="card">
+                    <div class="card-body">
+
+                      <div class="row">
+                        <div class="col-9 text-center" style="margin-left: 2%;">
+                      <fusioncharts
+                            width="700"
+                            height="400"
+                            type="pie3d"
+                            [dataSource]="dataSource">
+                          </fusioncharts>
+
+                        </div>
+                      </div>
+
+                      
+
+                    </div>
+                  </div>
+
+                </div>
+  
+            </div>
+          </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

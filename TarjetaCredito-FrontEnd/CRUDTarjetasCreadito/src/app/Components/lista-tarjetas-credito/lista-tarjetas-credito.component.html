@@ -1,0 +1,22 @@
+<div class="card-body text-center ">
+    <h5> LISTADO TARJETA DE CREDITO</h5>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Nombre Propietario:</td>
+                <td>N Tarjeta:</td>
+                <td>Fecha Vencimiento:</td>
+                <td>CVV:</td>
+                <td>Acciones:</td>
+            </tr>
+            <tr *ngFor="let inf of tarjetaService.list">
+                <td>{{inf.nombre}}</td>
+                <td>{{inf.numeroTarjeta}}</td>
+                <td>{{inf.fechaExp}}</td>
+                <td>{{inf.cvv}}</td>
+                <td><i (click)="modificarTarjeta(inf)" class="fa-solid fa-file-pen text-info"></i></td>
+                <td><i (click)="eliminarTarjeta(inf)" class="fa-solid fa-trash-can text-danger"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,19 @@
+.fa-solid{
+    cursor: pointer;
+}
+
+.green-icon{
+    color: forestgreen;
+}
+
+.red-icon{
+    color: red;
+}
+
+.green-border{
+    border-color: forestgreen;
+}
+
+.red-border{
+    border-color: red;
+}
