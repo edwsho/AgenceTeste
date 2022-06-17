@@ -7,15 +7,6 @@ namespace BackEndPortafolioTarjeta.ServicesLayer.Factory
     public class MapperFactory
     {
         /// <summary>
-        /// Metodo con el cual se instancia un objeto de tipo UserCreaditCardMapper
-        /// </summary>
-        /// <returns></returns>
-        public static UserCreaditCardMapper CreateUserCreaditCardMapper()
-        {
-            return new UserCreaditCardMapper();
-        }
-
-        /// <summary>
         /// Metodo con el cual se instancia un objeto de tipo ConsultorMapper
         /// </summary>
         /// <returns></returns>
@@ -25,7 +16,7 @@ namespace BackEndPortafolioTarjeta.ServicesLayer.Factory
         }
 
         /// <summary>
-        /// Metodo con el cual se instancia un objeto de tipo ReceitasConsultores
+        /// Metodo con el cual se instancia un objeto de tipo ReceitasConsultoresMapper
         /// </summary>
         /// <returns></returns>
         public static ReceitasConsultoresMapper CreateReceitasConsultoresMapper()
@@ -34,7 +25,7 @@ namespace BackEndPortafolioTarjeta.ServicesLayer.Factory
         }
 
         /// <summary>
-        /// Metodo con el cual se instancia un objeto de tipo ReceitasConsultores
+        /// Metodo con el cual se instancia un objeto de tipo ConsultoresConsultadosMapper
         /// </summary>
         /// <returns></returns>
         public static ConsultoresConsultadosMapper CreateConsultoresConsultadosMapper()
