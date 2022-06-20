@@ -1,0 +1,38 @@
+CREATE DEFINER=`a881d4_eddie21`@`%` PROCEDURE `GetConsultores`()
+BEGIN
+
+SELECT cu.no_usuario
+FROM cao_usuario cu
+INNER JOIN permissao_sistema p
+    ON cu.co_usuario = p.co_usuario
+WHERE  p.co_sistema = 1 and p.IN_ATIVO = 'S' and (p.CO_TIPO_USUARIO = 0 or p.CO_TIPO_USUARIO = 1 or p.CO_TIPO_USUARIO = 2);
+
+END
+
+
+
+CREATE DEFINER=`a881d4_eddie21`@`%` PROCEDURE `GetReceitas`(
+IN ConsultorName VARCHAR(255),
+IN Date1 VARCHAR(255),
+IN Date2 VARCHAR(255)
+)
+BEGIN
+
+    -- Select co_usuario ,data_emissao , SUM(valor) as SValor, SUM(total_imp_inc) as SumImpuestos, SUM(round(valor - (valor * (total_imp_inc /100))  ,2)) as ReceitaTotal, SUM(round(( valor - (valor * total_imp_inc/100)) * comissao_cn/100  ,2)) as Comissao FROM cao_fatura f 
+	Select co_usuario ,data_emissao , SUM(valor) as SValor, total_imp_inc as SumImpuestos, Round(SUM(round(valor - (valor * (total_imp_inc /100))  ,2)),2) as ReceitaTotal, Round(SUM(round(( valor - (valor * total_imp_inc/100)) * comissao_cn/100  ,2)),2) as Comissao FROM cao_fatura f 
+    Inner Join cao_os os on f.co_os = os.co_os
+	where co_usuario = (SELECT co_usuario FROM cao_usuario where no_usuario = ConsultorName COLLATE utf8_unicode_ci) 
+    and data_emissao BETWEEN Date1 and Date2 group by month(data_emissao);
+
+END
+
+
+
+CREATE DEFINER=`a881d4_eddie21`@`%` PROCEDURE `getCustoFixoConsultor`(
+IN ConsultorName VARCHAR(255) )
+BEGIN
+
+select co_usuario, brut_salario from cao_salario s
+where co_usuario = (SELECT co_usuario FROM cao_usuario where no_usuario = ConsultorName COLLATE utf8_unicode_ci);
+
+END
